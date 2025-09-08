@@ -95,7 +95,7 @@ export default function AdminResponses() {
                 <svg viewBox="0 0 650 200" className="mx-auto flex items-center justify-center mb-6 w-full max-w-lg">
                 <path
                   id="curve"
-                  d="M 25 200 A 270 140 0 0 1 650 200"
+                  d="M 25 200 A 270 120 0 0 1 650 200"
                   fill="transparent"
                 />
                 <text
