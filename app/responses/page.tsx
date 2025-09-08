@@ -84,68 +84,84 @@ export default function AdminResponses() {
 
   return (
     <div className="flex items-center justify-center min-h-screen text-gray-800 p-4">
-        <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-2xl relative">
+        <div className="bg-white/70 rounded-2xl shadow-xl p-8 w-full max-w-2xl relative">
             {loading ? (
             <div className="flex justify-center items-center h-64">
                 <Loader2 className="w-12 h-12 animate-spin text-blue-500" />
             </div>
             ) : (
             <div>
-                <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">
-                🎉 Response Viewer
-                </h2>
+                
+                <svg viewBox="0 0 650 200" className="mx-auto flex items-center justify-center mb-6 w-full max-w-lg">
+                <path
+                  id="curve"
+                  d="M 25 200 A 270 140 0 0 1 650 200"
+                  fill="transparent"
+                />
+                <text
+                  className="text-3xl font-bold fill-black"
+                  textAnchor="middle"
+                >
+                  <textPath href="#curve" startOffset="50%">
+                    Welcome to the Devang or Kavs Anniversary 🎉
+                  </textPath>
+                </text>
+              </svg>
+              
+              <hr></hr>
 
                 {/* Info Section */}
                 <div className="grid grid-cols-1 gap-4 text-base">
                 <div className="p-4 rounded-lg bg-gray-100">
-                    <p className="text-sm text-gray-500">Name</p>
-                    <p className="font-semibold">{currentResponse.name}</p>
+                  <div className="text-center">
+                      <p className="text-sm text-gray-500">This Message By</p>
+                      <p className="font-semibold text-2xl">{currentResponse.name}</p>
+                  </div>
+                  <div className="text-center">
+                        <p className="text-sm text-gray-500">Relation</p>
+                        <p className="font-semibold">
+                        {currentResponse.relation}
+                        {currentResponse.otherRelation && (
+                            <span className="text-sm text-gray-600">
+                            ({currentResponse.otherRelation})
+                            </span>
+                        )}
+                        </p>
+                    </div>
                 </div>
 
-                <div className="p-4 rounded-lg bg-gray-100">
-                    <p className="text-sm text-gray-500">Relation</p>
-                    <p className="font-semibold">
-                    {currentResponse.relation}
-                    {currentResponse.otherRelation && (
-                        <span className="ml-2 text-sm text-gray-600">
-                        ({currentResponse.otherRelation})
-                        </span>
-                    )}
-                    </p>
-                </div>
+                  <div className="p-2 rounded-lg text-center text-black bg-gray-100">
+                      <p className="text-sm">Message Title</p>
+                      <p className="font-semibold">{currentResponse.title}</p>
+                  </div>
 
-                <div className="p-4 rounded-lg bg-gray-100">
-                    <p className="text-sm text-gray-500">Title</p>
-                    <p className="font-semibold">{currentResponse.title}</p>
-                </div>
+                  <div className="p-4 rounded-lg bg-gray-100">
+                      <p className="text-sm text-gray-500">File</p>
+                      {currentResponse.file ? (
+                      <a
+                          href={`/${currentResponse.file}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-600 hover:underline font-semibold"
+                      >
+                          {currentResponse.file}
+                      </a>
+                      ) : (
+                      <p className="italic text-gray-400">No file uploaded</p>
+                      )}
+                  </div>
+                
+                  <div className="p-4 rounded-lg bg-gray-100">
+                      <p className="text-sm hidden text-gray-500">Message</p>
+                      <p className="font-medium leading-relaxed">
+                        {currentResponse.message}
+                      </p>
+                  </div>
 
-                <div className="p-4 rounded-lg bg-gray-100">
-                    <p className="text-sm text-gray-500">Message</p>
-                    <p className="font-medium leading-relaxed">
-                    {currentResponse.message}
-                    </p>
-                </div>
-
-                <div className="p-4 rounded-lg bg-gray-100">
-                    <p className="text-sm text-gray-500">File</p>
-                    {currentResponse.file ? (
-                    <a
-                        href={`/${currentResponse.file}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 hover:underline font-semibold"
-                    >
-                        {currentResponse.file}
-                    </a>
-                    ) : (
-                    <p className="italic text-gray-400">No file uploaded</p>
-                    )}
-                </div>
-
-                <div className="p-4 rounded-lg bg-gray-100">
+                <div className="p-4 rounded-lg text-center bg-gray-100">
                     <p className="text-sm text-gray-500">Wishes</p>
                     <p className="font-semibold text-green-700">
-                    {currentResponse.wishes}
+                      {currentResponse.wishes}
                     </p>
                 </div>
                 </div>
